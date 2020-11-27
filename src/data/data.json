@@ -1,0 +1,186 @@
+[
+    {
+        "UILabel":"Name",
+        "type": "text",
+        "required": "true",
+        "attributes" : {
+            "name": "name",
+            "value": "value",
+            "placeholder": "Enter Name",
+            "maxLength": "length",
+            "minLength": "length",
+            "size": "size",
+            "randomly": "true",
+            "list":"list"
+        }
+      },
+
+      {
+        "UILabel":"Number Type",
+         "type":"number",
+         "required": "false",
+         "attributes": {
+             "name":"name",
+             "value": "value",
+             "palceholder":"Enter Number",
+             "min":"value",
+             "equired" : "boolean",
+             "maxlength":"length",
+             "minLength":"length",
+             "multiple": "boolean"
+          }
+      },
+
+      {
+        "UILable": "UI label",
+        "type": "url",
+        "required": "boolen value",
+        "attributes": {
+             "name": "name",
+             "value": "value",
+             "placeholder": "Placeholder",
+             "maxLength": "length",
+             "minLength": "length",
+             "size": "size",
+             "randomly": "boolean",
+             "list":"list"
+        }
+    } ,
+
+    {
+        "UILable":"submti",
+        "type": "submit",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "formaction": "url",
+            "formenctype": "enc type",
+            "formmethod": "method",
+            "fromonvalidate": "false",
+            "fromtarget": "target"
+        }
+    } ,
+
+    {
+        "UILabel": "UIlabel",
+        "type":"time",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "max": "max",
+            "min": "min",
+            "randomly": "false",
+            "step": "steping Interval"
+        }
+      },
+
+      {
+        "UILabel": "UIlabel",
+        "type":"week",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "max": "max",
+            "min": "min",
+            "randomly": "boolen",
+            "step": "steping Interval"
+        }
+      },
+
+      {
+        "UILabel": "UIlabel",
+        "type":"date",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "max": "max",
+            "min": "min",
+            "step": "steping Interval"
+        }
+      },
+
+      {
+        "UILabel": "UIlabel",
+        "type":"image",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "alt": "altName",
+            "src":"source",
+            "height": "height",
+            "width": "width",
+            "formaction": "url",
+            "formenctype": "enc type",
+            "formmethod": "method",
+            "fromonvalidate": "boolen value",
+            "fromtarget": "target"
+        }
+      },
+
+      {
+        "UILable": "UI label",
+        "type": "tel",
+        "required": "boolen value",
+        "attributes": {
+             "name": "name",
+             "value": "value",
+             "placeholder": "Placeholder",
+             "maxLength": "length",
+             "minLength": "length",
+             "size": "size",
+             "randomly": "boolean",
+             "list":"list"
+        }
+    },
+
+      {
+        "UILabel": "UIlabel",
+        "type":"range",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "max": "max",
+            "min": "min",
+            "step": "steping Interval"
+        }
+      },
+
+      {
+        "UILable": "UILabel",
+        "type": "file",
+        "required": "boolean",
+        "attributes": {
+            "name":"name",
+            "value": "value"
+        }
+    },
+
+    {
+        "UILabel": "UIlabel",
+        "type":"radio",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "checked": "boolean"
+        }
+      },
+
+      {
+        "UILabel": "UIlabel",
+        "type":"hidden",
+        "attributes": {
+            "name": "name",
+            "value": "value"
+        }
+    },
+
+    {
+        "UILabel": "UIlabel",
+        "type":"button",
+        "attributes": {
+
+        }
+      }
+
+
+]
