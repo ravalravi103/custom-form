@@ -1,12 +1,13 @@
 .App {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  align-items: center;
+   padding: 50px;
+   background-color: wheat;
 }
 
 .input-card{
   display: flex;
-  justify-content: space-between;
-  background-color: wheat;
-  padding: 30px;
-  margin: 10px;
+  justify-content: space-evenly  ;
+ 
+  width: 500px;
 }
