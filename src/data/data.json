@@ -1,16 +1,22 @@
 [
   {
-    "UILabel":"Name",
-    "type": "text",
-    "required": "true",
-    "attributes" : {
-        "name": "name",
-        "placeholder": "Enter Name",
-        "maxLength": "length",
-        "minLength": "length",
-        "size": "size",
-        "randomly": "true",
-        "list":"list"
-    }
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"text"
+        
+    },
+    "attributes": {
+          "name": "name",
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Enter name1",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
   }
 ]

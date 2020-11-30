@@ -1,57 +1,122 @@
 import './App.css';
 
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 
 import fieldData from './data/data.json';
 
 function App() {
-  const [value,setValue] = useState('');
 
-  const onInputChange = (e) => {
-      setValue(e.target.value)
+   let allFields = [];
+   let element = ''
+
+   function createLabel() {
+     
+   }
+
+   function createTextArea(field){
+      return element = (<textarea 
+                          name={field.attributes.name}
+                          rows={field.attributes.rows}
+                          cols={field.attributes.cols}
+                          ></textarea>)
+   }
+
+  function createButton(field){
+  return element = (<button
+                      formAction={field.attributes.formAction}
+                      formEncType={field.attributes.formEncType}
+                      formMethod={field.attributes.formMethod}
+                      formTarget={field.attributes.target}
+                      >
+                      {field.attributes.value}
+                    </button>)
   }
+
+  function createSelectField(field){
+      return element = (
+                  <select name={field.attributes.name}>
+                      {field.options.map(option => {
+                            <option 
+                                key={option.key} 
+                                value={option.value}>
+                                  {option.displayValue}
+                            </option>
+                      })}
+                  </select>)
+        
+  }
+
+  function checkInputTypeField(field){
+    switch(field.fieldConfig.type){
+      case 'text':
+        element =  (<input
+                      type={field.fieldConfig.type}
+                      name={field.attributes.name}
+                      placeholder={field.attributes.placeholder}
+                      maxLength={field.attributes.maxLength}
+                      minLength={field.attributes.minLength}
+                      size={field.attributes.size}
+                      list={field.attributes.list}
+                      required={field.validation.required}
+                  />)
+          break;
+        case 'password':
+              element = (<input
+                type={field.fieldConfig.type}
+                name={field.attributes.name}
+                placeholder={field.attributes.placeholder}
+                maxLength={field.attributes.maxLength}
+                minLength={field.attributes.minLength}
+                size={field.attributes.size}
+                list={field.attributes.list}
+                required={field.validation.required}
+            />)
+          break;
+        case 'radio': 
+                element = (<input
+                  type={field.fieldConfig.type}
+                  name={field.attributes.name}
+                  placeholder={field.attributes.placeholder} 
+                  value={field.attributes.value}      
+                  required={field.validation.required}
+                />)
+
+    }
+    return element
+  }
+
+  const createField = () => {
+    fieldData.map(field => {
+          switch(field.fieldName) {
+            case 'input':
+                element =  checkInputTypeField(field);
+                allFields.push(element)
+               break;
+             case 'select':
+                 element = createSelectField(field);
+                 allFields.push(element)
+               break;
+             case "button": 
+                  element = createButton(field);
+                  allFields.push(element);
+                break;
+              case 'textarea':
+                  element = createTextArea(field);
+                  allFields.push(element);
+                break;
+              case 'label': 
+                   element = createLabel(field);
+                   allFields.push(element);
+                break;
+           }
+           
+    })
+    return allFields;
+}
   
   return (
     <div className="App" >
-             <div>
-             <h1>Contact Form</h1>
-             {fieldData.map((field,i) => {
-            return (
-              <div key={i} className="input-card">
-                   <label>{field.UILabel}</label>
-                   <input 
-                    type={field.type}
-                    onChange={(e) => onInputChange(e)}
-                    placeholder={field.attributes.placeholder}
-                    min={field.attributes.min}
-                    max={field.attributes.max}
-                    maxLength={field.attributes.maxLength}
-                    minLength={field.attributes.minLength}
-                    multiple={field.attributes.multiple}
-                    step={field.attributes.step}
-                    formAction={field.attributes.formaction}
-                    formEncType={field.attributes.formenctype}
-                    formNoValidate={field.attributes.fromonvalidate}
-                    formTarget={field.attributes.formTarget}
-                    fromonvalidate={field.attributes.fromonvalidate}
-                    src={field.attributes.src}
-                    width={field.attributes.width}
-                    height={field.attributes.height}
-                    alt={field.attributes.alt}
-                    required={field.attributes.required}
-                    checked={field.attributes.checked}
-                    pattern={field.attributes.pattern}
-                    list={field.attributes.list}
-                    value={field.attributes.value}
-                    name={field.attributes.name}
-                    />
-              </div>
-            )
-          })}
-             </div>
-
-
-          <div>{value}</div>
+         {createField()}
     </div>
   );
 }

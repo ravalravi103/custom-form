@@ -211,6 +211,38 @@
             }
           
         }
+      },
+
+      {
+          "fieldName" : "input",
+          "fieldConfig": {
+              "type":"text"
+              
+          },
+          "attributes": {
+                "name": "name",
+                "value": "",
+                "minLength": "minLength",
+                "maxlength": "maxLength",
+                "placeholder":"Enter name",
+                "size": "size",
+                "randomly": "true",
+                "list": "list"
+          },
+          "validation": {
+              "required": "true"
+          }
+          
+      },
+      {
+        "fieldName" : "select",
+        "attributes": {
+          "name": "Country",
+          "placeholder": "Country"
+        },
+        "options" : [
+           {"key": "India", "value": "India", "displayName" : "India"}
+        ] 
       }
-  
+
   ]
