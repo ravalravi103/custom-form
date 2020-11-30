@@ -32,34 +32,14 @@ function Field({fieldData}) {
             // validateField(e,field);
             
         if(e.target.value==="") return
-        // check all The Element of fieddata and 
-        //fieldData.length===0 add Element 
-        // fieldData.length>0
-                // compare that element.name === target.name
-                // element.name === target.name => Remove element value 
-                // elment.name !== targtet.name => add Element Value
-
-        if(fieldValue.length===0)  {
-            console.log("[fieldvValue.length ===0]")
-            console.log(e.target.value)
-            setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
-          
-        }
+        if(fieldValue.length===0) return setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
         if(fieldValue.length>0){
-            console.log("fieldValue.length >0")
             fieldValue.map(tempField => {
-                if(tempField.name!==e.target.name){
-                     // add The Element Value
-                     console.log('Value for This Field Not Exist');
-                     console.log(e.target.value)
-                     setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
-                     console.log(fieldValue);
-                }
-                else {
-                    // Remove Element Value
-                    console.log('value for This Field alreay Exist Remove The Value and add new value')
-                    const tempArr = fieldValue.filter(field => field.name !==e.target.name)
-                    console.log(tempArr)
+                if(tempField.name!==e.target.name) return setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
+                else{
+                  const tempArr=fieldValue.filter(field => field.name!==e.target.name)
+                  tempArr.push({name: field.attributes.name,value: e.target.value})
+                  setFieldValue(tempArr)
                 }
             })
         }
@@ -89,14 +69,17 @@ function Field({fieldData}) {
        }
      
        function createSelectField(field){
+           console.log(field)
            return element = (
                        <select name={field.attributes.name}>
                            {field.options.map(option => {
-                                 <option 
-                                     key={option.key} 
-                                     value={option.value}>
-                                       {option.displayValue}
-                                 </option>
+                               return(
+                                <option 
+                                    key={option.key} 
+                                    value={option.value}>
+                                  {option.displayName}
+                            </option>
+                               )
                            })}
                        </select>)
              
@@ -179,7 +162,6 @@ function Field({fieldData}) {
            {createField()}
            {text}
            {console.log(fieldValue)}
-            {fieldValue.map(field => <h1>{field.value}</h1>)}
         </div>
     )
 }

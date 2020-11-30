@@ -243,6 +243,23 @@
         "options" : [
            {"key": "India", "value": "India", "displayName" : "India"}
         ] 
+      },
+
+      {
+        "fieldName" : "select",
+        "attributes": {
+          "name": "Country",
+          "placeholder": "Country"
+        },
+        "options" : [
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"}
+    
+        ] 
       }
 
   ]

@@ -7,11 +7,11 @@
         
     },
     "attributes": {
-          "name": "namejanu",
+          "name": "name2",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
-          "placeholder":"Enter name1",
+          "placeholder":"Enter Name2",
           "size": "size",
           "randomly": "true",
           "list": "list"
