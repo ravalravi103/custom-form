@@ -2,11 +2,12 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"text"
+        "type":"text",
+        "value": ""
         
     },
     "attributes": {
-          "name": "name",
+          "name": "namejanu",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
