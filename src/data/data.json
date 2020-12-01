@@ -19,5 +19,27 @@
     "validation": {
         "required": true
     } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"text",
+        "value": ""
+        
+    },
+    "attributes": {
+          "name": "namejanu",
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Enter name1",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
   }
+  
 ]

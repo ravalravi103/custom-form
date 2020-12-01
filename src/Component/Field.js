@@ -3,45 +3,31 @@ import React,{useState} from 'react'
 function Field({fieldData}) {
 
     const [text,setText] = useState('')
-    const [fieldValue,setFieldValue] = useState([])
+    const [fieldValue,setFieldValue] = useState([]);
+    const [finalFormData, setFinalFormData] = useState()
 
     let allFields = [];
     let element = ''
 
 
-    function storefieldata(e,field){
-        
-    }
 
-    function validateField(e,field){
-         
-        //1. Validate Fields 
-
-        // 2. If validation Pass Then store The data
-            storefieldata(e,field);
-    }
-
+   
 
     function handleOnchange(e,field) {
         setText(e.target.value)
     } 
 
-    function handleBulr(e,field){
-
-        // 1. validate The Field
-            // validateField(e,field);
-            
+    function handleBulr(e,field){ 
+      //apply validation here 
         if(e.target.value==="") return
         if(fieldValue.length===0) return setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
         if(fieldValue.length>0){
-            fieldValue.map(tempField => {
-                if(tempField.name!==e.target.name) return setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
-                else{
-                  const tempArr=fieldValue.filter(field => field.name!==e.target.name)
-                  tempArr.push({name: field.attributes.name,value: e.target.value})
-                  setFieldValue(tempArr)
-                }
-            })
+            if(fieldValue.find(field => field.name===e.target.value)===undefined){
+              setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
+            }
+            const tempArr=fieldValue.filter(field => field.name!==e.target.name)
+            tempArr.push({name: field.attributes.name,value: e.target.value})
+            setFieldValue(tempArr)
         }
     }
 
@@ -151,17 +137,23 @@ function Field({fieldData}) {
                        element = createLabel(field);
                        allFields.push(element);
                     break;
-               }
-               
+               }  
         })
         return allFields;
     }
+    
+    function displayDataHandler(){
       
+    }
+
     return (
         <div>
            {createField()}
-           {text}
-           {console.log(fieldValue)}
+           {finalFormData && finalFormData.map(form => <h1>{form}</h1>)}
+           <div className>
+                <button onClick={(e) => setFinalFormData(fieldValue.map(field => field.value))}>Get Data</button>
+           </div>
+   
         </div>
     )
 }
