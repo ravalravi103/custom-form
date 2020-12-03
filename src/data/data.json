@@ -7,11 +7,11 @@
         
     },
     "attributes": {
-          "name": "name2",
+          "name": "name",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
-          "placeholder":"Enter Name2",
+          "placeholder":"Name*",
           "size": "size",
           "randomly": "true",
           "list": "list"
@@ -23,16 +23,16 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"text",
+        "type":"email",
         "value": ""
         
     },
     "attributes": {
-          "name": "namejanu",
+          "name": "email",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
-          "placeholder":"Enter name1",
+          "placeholder":"Email*",
           "size": "size",
           "randomly": "true",
           "list": "list"
@@ -40,6 +40,129 @@
     "validation": {
         "required": true
     } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"password",
+        "value": ""
+        
+    },
+    "attributes": {
+          "name": "password",
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Password*",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName":"label",
+    "attributes":{
+      "value":"Gender"
+    }
+
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"radio"
+    },
+    "attributes": {
+          "name":"gender",
+          "value": "Male"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"radio"
+    },
+    "options": [
+        {}
+    ],
+    "attributes": {
+          "name":"gender",
+          "value": "Female"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "select",
+    "fieldConfig": {
+        "type":"text"
+    },
+    "options":[
+        {"key":"India","value":"India","displayName":"India"},
+        {"key":"Pakistan","value":"Pakistan","displayName":"Pakistan"},
+        {"key":"Japan","value":"Japan","displayName":"Japan"},
+        {"key":"Canada","value":"canada","displayName":"canada"}
+    ],
+    "attributes": {
+          "name": "mycountry"
+    }
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"range"
+    },
+    "attributes": {
+          "name": "exp_level",
+          "max":100,
+          "min": 1,
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+
+
+
+
+
+
+
+
+
+
+
+  
+  {
+    "fieldName" : "button",
+    "fieldConfig": {
+        "type":"submit"
+    },
+    "attributes": {
+          "name": "email",
+          "value": "Submit"
+    }
+  },
+  {
+    "fieldName" : "button",
+    "fieldConfig": {
+        "type":"reset"
+    },
+    "attributes": {
+          "name": "email",
+          "value": "Reset"
+    }
   }
+
+ 
   
 ]

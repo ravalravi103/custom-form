@@ -1,38 +1,114 @@
-
-//   type : text
-//   type : number 
-//   type : email 
-//   type : file
-//   type : hidden 
-//   type : password 
-//   type : submit
-//   type : url
-//   type : time 
-//   type : week 
-//   type : date 
-//   type : Radio 
-//   type : image
-//   type : range 
-//   type : button
-//   type : reset
-//   type : tel
+[
+    // Input Type Radio
+    {
+        "fieldName" : "input",
+        "fieldConfig": {
+            "type":"radio"
+        },
+        "attributes": {
+              "name":"gender",
+              "value": "Female"
+        },
+        "validation": {
+            "required": true
+        } 
+      },
 
 
-//   [{
-//     "uiName": "Field 1",
-//     "fieldName": "field1",
-//     "type": "text",
-//     "attributes": {
-//       "placeholder": "Enter Field 1"
-//     }
-//   },
-//   {
-//     "uiName": "Field 2",
-//     "fieldName": "field2",
-//     "type": "number",
-//     "attributes": {
-//       "placeholder": "Enter Field 2",
-//       "min": 5,
-//       "max": 10
-//     }
-//   }]
+    // Input Type Password
+    {
+        "fieldName" : "input",
+        "fieldConfig": {
+            "type":"password",
+            "value": ""
+            
+        },
+        "attributes": {
+              "name": "password",
+              "value": "",
+              "minLength": "minLength",
+              "maxlength": "maxLength",
+              "placeholder":"Password*",
+              "size": "size",
+              "randomly": "true",
+              "list": "list"
+        },
+        "validation": {
+            "required": true
+        } 
+      },
+
+
+
+    //   Input Type text
+    {
+        "fieldName" : "input",
+        "fieldConfig": {
+            "type":"text"
+        },
+        "attributes": {
+              "name": "email",
+              "value": "",
+              "minLength": "minLength",
+              "maxlength": "maxLength",
+              "placeholder":"Email*",
+              "size": "size",
+              "randomly": "true",
+              "list": "list"
+        },
+        "validation": {
+            "required": true
+        } 
+      },
+
+    //   Input Type Range 
+    {
+        "fieldName" : "input",
+        "fieldConfig": {
+            "type":"range"
+        },
+        "attributes": {
+              "name": "email",
+              "max":100,
+              "min": 1,
+              "size": "size",
+              "randomly": "true",
+              "list": "list"
+        },
+        "validation": {
+            "required": true
+        } 
+      },
+
+
+
+    // Select Element 
+    {
+        "fieldName" : "select",
+        "fieldConfig": {
+            "type":"text"
+        },
+        "options":[
+            {"key":"India","value":"India","displayName":"India"},
+            {"key":"Pakistan","value":"Pakistan","displayName":"Pakistan"},
+            {"key":"Japan","value":"Japan","displayName":"Japan"},
+            {"key":"Canada","value":"canada","displayName":"canada"}
+        ],
+        "attributes": {
+              "name": "email",
+              "value": ""
+        }
+      },
+
+    //  "Button Type Submit"
+    {
+        "fieldName" : "button",
+        "fieldConfig": {
+            "type":"submit"
+        },
+        "attributes": {
+              "name": "email",
+              "value": "Submit"
+        }
+      },
+

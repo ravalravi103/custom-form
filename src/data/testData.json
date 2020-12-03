@@ -260,6 +260,31 @@
            {"key": "India", "value": "India", "displayName" : "India"}
     
         ] 
-      }
+      },
+
+
+      
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"password",
+        "value": ""
+        
+    },
+    "attributes": {
+          "name": "password",
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Password*",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  }
+  
 
   ]

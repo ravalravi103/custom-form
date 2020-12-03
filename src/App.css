@@ -10,3 +10,41 @@
   justify-content: space-evenly  ;
   width: 500px;
 }
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  background-color: cadetblue;
+  padding: 10px;
+  margin: 5px;
+}
+.card-data{
+  margin: 10px;
+  padding: 10px;
+}
+
+.form{
+  background-color: cornflowerblue;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 30px;
+}
+.form-group{
+  padding: 20px;
+
+}
+input{
+  height: 22px;
+  font-size: 18px;
+}
+
+.getdata-btn{
+  margin-left: 30px;
+  background-color: darkgoldenrod;
+  padding: 5px 15px;
+  font-size: 16px;
+}
