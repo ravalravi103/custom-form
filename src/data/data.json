@@ -62,13 +62,7 @@
         "required": true
     } 
   },
-  {
-    "fieldName":"label",
-    "attributes":{
-      "value":"Gender"
-    }
-
-  },
+ 
   {
     "fieldName" : "input",
     "fieldConfig": {
@@ -125,6 +119,29 @@
           "size": "size",
           "randomly": "true",
           "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"date"
+    },
+    "attributes": {
+          "name": "Date"
+    },
+    "validation": {
+        "required": true
+    } 
+  },{
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"time"
+    },
+    "attributes": {
+          "name": "Time"
     },
     "validation": {
         "required": true

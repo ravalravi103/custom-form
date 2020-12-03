@@ -171,8 +171,38 @@ function Field({fieldData}) {
                   required={field.validation.required}
               />)
             break;
+            case 'date':
+              element = (<input
+                type={field.fieldConfig.type}
+                name={field.attributes.name}
+                placeholder={field.attributes.placeholder}
+                maxLength={field.attributes.maxLength}
+                minLength={field.attributes.minLength}
+                onChange={(e) => setText(e.target.value)}
+                size={field.attributes.size}
+                list={field.attributes.list}
+                onChange={(e) => handleOnchange(e,field)}
+                onBlur={(e) => handleBulr(e,field)}
+                required={field.validation.required}
+            />)
+          break;
+          case 'time':
+            element = (<input
+              type={field.fieldConfig.type}
+              name={field.attributes.name}
+              placeholder={field.attributes.placeholder}
+              maxLength={field.attributes.maxLength}
+              minLength={field.attributes.minLength}
+              onChange={(e) => setText(e.target.value)}
+              size={field.attributes.size}
+              list={field.attributes.list}
+              onChange={(e) => handleOnchange(e,field)}
+              onBlur={(e) => handleBulr(e,field)}
+              required={field.validation.required}
+          />)
+        break;
             case 'radio': 
-                    element = (<input
+                 element = (<><label>{field.attributes.value}</label><input
                       type={field.fieldConfig.type}
                       name={field.attributes.name}
                       placeholder={field.attributes.placeholder} 
@@ -181,7 +211,7 @@ function Field({fieldData}) {
                       onChange={(e) => handleOnchange(e,field)}
                       onBlur={(e) => handleBulr(e,field)}
                       required={field.validation.required}
-                    />)
+                    /></>)
         }
         return element
       }

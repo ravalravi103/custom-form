@@ -80,6 +80,20 @@
         } 
       },
 
+      //   Input Type Date 
+    {
+        "fieldName" : "input",
+        "fieldConfig": {
+            "type":"date"
+        },
+        "attributes": {
+              "name": "date",
+        },
+        "validation": {
+            "required": true
+        } 
+      },
+
 
 
     // Select Element 
