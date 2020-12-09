@@ -1,17 +1,23 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
 function Field({fieldData}) {
 
     const [text,setText] = useState('')
     const [fieldValue,setFieldValue] = useState([]);
-    const [finalFormData, setFinalFormData] = useState([])
+    const [finalFormData, setFinalFormData] = useState([]);
+    const [allJsxElementArray,setAllJsxElementArray] = useState([]);
 
     let allFields = [];
     let element = ''
 
+    useEffect(() => {
+        setAllJsxElementArray(createField());
+    },[])
+
     function handlerButtonTypeButton(){
       console.log("Button Type Button Clicked !")
     }
+    
 
     function handleButtonTypesubmit(){
          console.log("Button Type Submit  clicked !")
@@ -46,32 +52,33 @@ function Field({fieldData}) {
       console.log(e.target)
       //apply validation here 
         if(e.target.value==="") return
-        if(fieldValue.length===0) return setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
+        if(fieldValue.length===0) return setFieldValue([{name:field.fieldConfig.name,value:e.target.value}])
         if(fieldValue.length>0){
             if(fieldValue.find(field => field.name===e.target.value)===undefined){
               setFieldValue([...fieldValue,{name:e.target.name,value:e.target.value}])
             }
-            const tempArr=fieldValue.filter(field => field.name!==e.target.name)
+            const tempArr=fieldValue.filter(field => field.fieldConfig.name!==e.target.name)
             tempArr.push({name: e.target.name,value: e.target.value})
             setFieldValue(tempArr)
         }
     }
 
     function createLabel(field) {
-        return element = (<label>{field.attributes.value}</label>)
+        return  (<label>{field.attributes.labelName}</label>)
         }
      
         function createTextArea(field){
-           return element = (<textarea 
-                               name={field.attributes.name}
+           return  (<textarea 
+                               name={field.fieldConfig.name}
                                rows={field.attributes.rows}
                                cols={field.attributes.cols}
-                               ></textarea>)
+           >{field.attributes.value}</textarea>)
         }
      
        function createButton(field){
-       return element = (<button
+       return  (<button
                            type={field.fieldConfig.type}
+                         
                            formAction={field.attributes.formAction}
                            formEncType={field.attributes.formEncType}
                            formMethod={field.attributes.formMethod}
@@ -92,9 +99,9 @@ function Field({fieldData}) {
        }
 
        function createSelectField(field){
-           return element = (
+           return  (
                        <select 
-                         name={field.attributes.name} 
+                         name={field.fieldConfig.name} 
                          onChange={(e) => handleOnchange(e)} 
                          onBlur={(e) => handleBulr(e)}>
                            {field.options.map(option => {
@@ -106,118 +113,80 @@ function Field({fieldData}) {
                             </option>
                                )
                            })}
-                       </select>)
-             
-       }
+                       </select>)             
+      }
+    
+     function basicInputProps(field){
+       return (
+        (!field.attributes) ? {
+           type:field.fieldConfig.type,
+           name:field.fieldConfig.name,
+           onChange:(e) => handleOnchange(e,field),
+           onBlur:(e) => handleBulr(e,field),
+         } : {
+          type:field.fieldConfig.type,
+          name:field.fieldConfig.name,
+          onChange:(e) => handleOnchange(e,field),
+          onBlur:(e) => handleBulr(e,field),
+          required:field.validation.required,
+          placeholder:field.attributes.placeholder,
+          maxLength : field.attributes.maxLength,
+          minLength : field.attributes.minLength,
+         }
+       )
+     
+     }  
 
     function checkInputTypeField(field){
         switch(field.fieldConfig.type){
           case 'text':
-            element =  (<input
-                          type={field.fieldConfig.type}
-                          name={field.attributes.name}
-                          placeholder={field.attributes.placeholder}
-                          maxLength={field.attributes.maxLength}
-                          minLength={field.attributes.minLength}
-                          size={field.attributes.size}
-                          list={field.attributes.list}
-                          onChange={(e) => handleOnchange(e,field)}
-                        
-                          onBlur={(e) => handleBulr(e,field)}
-                          required={field.validation.required}
-                      />)
-              break;
-              case 'email':
-                element =  (<input
-                              type={field.fieldConfig.type}
-                              name={field.attributes.name}
-                              placeholder={field.attributes.placeholder}
-                              maxLength={field.attributes.maxLength}
-                              minLength={field.attributes.minLength}
-                              size={field.attributes.size}
-                              list={field.attributes.list}
-                              onChange={(e) => handleOnchange(e,field)}
-                              onBlur={(e) => handleBulr(e,field)}
-                              required={field.validation.required}
-                          />)
-                  break;
-            case 'password':
-                  element = (<input
-                    type={field.fieldConfig.type}
-                    name={field.attributes.name}
-                    placeholder={field.attributes.placeholder}
-                    maxLength={field.attributes.maxLength}
-                    minLength={field.attributes.minLength}
-                    onChange={(e) => setText(e.target.value)}
-                    size={field.attributes.size}
-                    list={field.attributes.list}
-                    onChange={(e) => handleOnchange(e,field)}
-                    onBlur={(e) => handleBulr(e,field)}
-                    required={field.validation.required}
-                />)
-              break;
+            element =  (<input{...basicInputProps(field)}/>)
+            break;
+          case 'email':
+             element =  (<input {...basicInputProps(field)}/>)
+             break;
+          case 'password':
+            element =  (<input {...basicInputProps(field)}/>)
+            break;
               case 'range':
                 element = (<input
-                  type={field.fieldConfig.type}
-                  name={field.attributes.name}
-                  placeholder={field.attributes.placeholder}
-                  maxLength={field.attributes.maxLength}
-                  minLength={field.attributes.minLength}
-                  onChange={(e) => setText(e.target.value)}
+                  {...basicInputProps(field)}
+                  max={field.attributes.max}
+                  min={field.attributes.min}
                   size={field.attributes.size}
-                  list={field.attributes.list}
-                  onChange={(e) => handleOnchange(e,field)}
-                  onBlur={(e) => handleBulr(e,field)}
-                  required={field.validation.required}
-              />)
+                  list={field.attributes.list}/>)
             break;
             case 'date':
               element = (<input
-                type={field.fieldConfig.type}
-                name={field.attributes.name}
-                placeholder={field.attributes.placeholder}
-                maxLength={field.attributes.maxLength}
-                minLength={field.attributes.minLength}
-                onChange={(e) => setText(e.target.value)}
-                size={field.attributes.size}
-                list={field.attributes.list}
-                onChange={(e) => handleOnchange(e,field)}
-                onBlur={(e) => handleBulr(e,field)}
-                required={field.validation.required}
+                {...basicInputProps(field)}
+                max={field.attributes.max}
+                min={field.attributes.min}
+                step={field.attributes.step}
             />)
           break;
           case 'time':
             element = (<input
-              type={field.fieldConfig.type}
-              name={field.attributes.name}
-              placeholder={field.attributes.placeholder}
+              {...basicInputProps(field)}
               maxLength={field.attributes.maxLength}
               minLength={field.attributes.minLength}
-              onChange={(e) => setText(e.target.value)}
               size={field.attributes.size}
               list={field.attributes.list}
-              onChange={(e) => handleOnchange(e,field)}
-              onBlur={(e) => handleBulr(e,field)}
-              required={field.validation.required}
+              
+
           />)
         break;
             case 'radio': 
                  element = (<><label>{field.attributes.value}</label><input
-                      type={field.fieldConfig.type}
-                      name={field.attributes.name}
-                      placeholder={field.attributes.placeholder} 
-                      onChange={(e) => setText(e.target.value)}
-                      value={field.attributes.value}     
-                      onChange={(e) => handleOnchange(e,field)}
-                      onBlur={(e) => handleBulr(e,field)}
-                      required={field.validation.required}
-                    /></>)
+                      {...basicInputProps(field)}
+                      value={field.attributes.value}/></>)
+                  break;
         }
         return element
       }
       
 
     const createField = () => {
+      console.log(fieldData)
         fieldData.map(field => {
               switch(field.fieldName) {
                 case 'input':
@@ -250,13 +219,9 @@ function Field({fieldData}) {
         <div >
            <div className="container">
             <div className="form"> 
-              {createField().map((field,i) => {
-                return (
-                  <div className="form-group" key={i}>
-                       <div className="form-control">{field}</div>
-                  </div>
-                )
-            })}
+            {allJsxElementArray}
+          {/* {allJsxElementArray.map(field => field)} */}
+              {/* {createField()} */}
             </div>
             <div className="card">
                 {finalFormData && finalFormData.map(form => {
