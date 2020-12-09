@@ -1,0 +1,208 @@
+[
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"text",
+        "value": "",
+        "name": "name"
+        
+    },
+    "attributes": {
+        
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Name*",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+      "name": "email",
+        "type":"email",
+        "value": ""
+        
+    },
+    "attributes": {
+      
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Email*",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+      "name": "password",
+        "type":"password",
+        "value": ""
+        
+    },
+    "attributes": {
+         
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Password*",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+ 
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"radio",
+        "name":"gender"
+    },
+    "attributes": {
+        
+          "value": "Male"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"radio",
+        "name":"gender"
+    },
+    "options": [
+        {}
+    ],
+    "attributes": {
+         
+          "value": "Female"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "select",
+    "fieldConfig": {
+        "type":"text",
+        "name": "mycountry"
+    },
+    "options":[
+        {"key":"India","value":"India","displayName":"India"},
+        {"key":"Pakistan","value":"Pakistan","displayName":"Pakistan"},
+        {"key":"Japan","value":"Japan","displayName":"Japan"},
+        {"key":"Canada","value":"canada","displayName":"canada"}
+    ],
+    "attributes": {
+        
+    }
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+      "name": "exp_level",
+        "type":"range"
+    },
+    "attributes": {
+       
+          "max":100,
+          "min": 1,
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+      "name": "Date",
+        "type":"date"
+    },
+    "attributes": {
+        
+    },
+    "validation": {
+        "required": true
+    } 
+  },{
+    "fieldName" : "input",
+    "fieldConfig": {
+      "name": "Time",
+        "type":"time"
+    },
+    "attributes": {
+        
+    },
+    "validation": {
+        "required": true
+    } 
+  },
+  {
+    "fieldName":"textarea",
+    "fieldConfig": {
+
+    },
+    "attributes": {
+      "row": 20,
+      "cols": 40,
+      "name": "Suggtions",
+      "value":"Enter SomeThings Here"
+    }
+  },
+
+
+
+
+
+
+
+
+
+
+
+  
+  {
+    "fieldName" : "button",
+    "fieldConfig": {
+        "name": "submit",
+        "type":"submit"
+    },
+    "attributes": {
+        
+          "value": "Submit"
+    }
+  },
+  {
+    "fieldName" : "button",
+    "fieldConfig": {
+        "name": "email",
+        "type":"reset"
+    },
+    "attributes": {
+         
+          "value": "Reset"
+    }
+  }
+
+ 
+  
+]
