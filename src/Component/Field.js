@@ -43,10 +43,9 @@ function Field({fieldData}) {
     } 
 
     function handleBulr(e,field){ 
-      console.log(e.target)
-      //apply validation here 
+       console.log('Valiodation Passed !')
         if(e.target.value==="") return
-        if(fieldValue.length===0) return setFieldValue([{name:field.attributes.name,value:e.target.value}])
+        if(fieldValue.length===0) return setFieldValue([{name:e.target.name,value:e.target.value}])
         if(fieldValue.length>0){
             if(fieldValue.find(field => field.name===e.target.value)===undefined){
               setFieldValue([...fieldValue,{name:e.target.name,value:e.target.value}])
@@ -63,7 +62,7 @@ function Field({fieldData}) {
      
         function createTextArea(field){
            return element = (<textarea 
-                               name={field.attributes.name}
+                               name={field.fieldConfig.name}
                                rows={field.attributes.rows}
                                cols={field.attributes.cols}
                                ></textarea>)
@@ -85,7 +84,7 @@ function Field({fieldData}) {
        function createSelectField(field){
            return element = (
                        <select 
-                         name={field.attributes.name} 
+                         name={field.fieldConfig.name} 
                          onChange={(e) => handleOnchange(e)} 
                          onBlur={(e) => handleBulr(e)}>
                            {field.options.map(option => {
@@ -105,12 +104,12 @@ function Field({fieldData}) {
         return (
          (!field.attributes) ? {
             type:field.fieldConfig.type,
-            name:field.attributes.name,
+            name:field.fieldConfig.name,
             onChange:(e) => handleOnchange(e,field),
             onBlur:(e) => handleBulr(e,field),
           } : {
            type:field.fieldConfig.type,
-           name:field.attributes.name,
+           name:field.fieldConfig.name,
            onChange:(e) => handleOnchange(e,field),
            onBlur:(e) => handleBulr(e,field),
            required:field.validation.required,

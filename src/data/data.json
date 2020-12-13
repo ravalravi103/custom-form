@@ -3,11 +3,11 @@
     "fieldName" : "input",
     "fieldConfig": {
         "type":"text",
+        "name": "name",
         "value": ""
         
     },
     "attributes": {
-          "name": "name",
           "minLength": "minLength",
           "maxlength": "maxLength",
           "placeholder":"Name*",
@@ -22,10 +22,10 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"email"        
+        "type":"email" ,
+        "name": "email"       
     },
     "attributes": {
-          "name": "email",
           "placeholder":"Email*",
           "size": "size"
     },
@@ -36,10 +36,11 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
+        "name": "password",
         "type":"password"   
     },
     "attributes": {
-          "name": "password",
+       
           "minLength": "minLength",
           "maxlength": "maxLength",
           "placeholder":"Password*",
@@ -55,10 +56,10 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
+        "name":"gender", 
         "type":"radio"
     },
     "attributes": {
-          "name":"gender",
           "value": "Male"
     },
     "validation": {
@@ -68,13 +69,10 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
+        "name":"gender",
         "type":"radio"
     },
-    "options": [
-        {}
-    ],
     "attributes": {
-          "name":"gender",
           "value": "Female"
     },
     "validation": {
@@ -84,6 +82,7 @@
   {
     "fieldName" : "select",
     "fieldConfig": {
+        "name": "mycountry",
         "type":"text"
     },
     "options":[
@@ -93,16 +92,16 @@
         {"key":"Canada","value":"canada","displayName":"canada"}
     ],
     "attributes": {
-          "name": "mycountry"
+         
     }
   },
   {
     "fieldName" : "input",
     "fieldConfig": {
+        "name": "exp_level",
         "type":"range"
     },
     "attributes": {
-          "name": "exp_level",
           "max":100,
           "min": 1,
           "size": "size",
@@ -116,10 +115,11 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
+        "name": "Date",
         "type":"date"
     },
     "attributes": {
-          "name": "Date"
+
     },
     "validation": {
         "required": true
@@ -127,10 +127,11 @@
   },{
     "fieldName" : "input",
     "fieldConfig": {
+        "name": "Time",
         "type":"time"
     },
     "attributes": {
-          "name": "Time"
+         
     },
     "validation": {
         "required": true
@@ -151,20 +152,20 @@
   {
     "fieldName" : "button",
     "fieldConfig": {
+      "name": "submit",
         "type":"submit"
     },
     "attributes": {
-          "name": "email",
           "value": "Submit"
     }
   },
   {
     "fieldName" : "button",
     "fieldConfig": {
+        "name": "reset",
         "type":"reset"
     },
     "attributes": {
-          "name": "email",
           "value": "Reset"
     }
   }
