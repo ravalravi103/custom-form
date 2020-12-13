@@ -3,12 +3,11 @@
     "fieldName" : "input",
     "fieldConfig": {
         "type":"text",
-        "value": "",
-        "name": "name"
+        "value": ""
         
     },
     "attributes": {
-        
+          "name": "name",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
@@ -24,13 +23,12 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-      "name": "email",
         "type":"email",
         "value": ""
         
     },
     "attributes": {
-      
+          "name": "email",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
@@ -46,13 +44,12 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-      "name": "password",
         "type":"password",
         "value": ""
         
     },
     "attributes": {
-         
+          "name": "password",
           "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
@@ -69,11 +66,10 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"radio",
-        "name":"gender"
+        "type":"radio"
     },
     "attributes": {
-        
+          "name":"gender",
           "value": "Male"
     },
     "validation": {
@@ -83,14 +79,13 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"radio",
-        "name":"gender"
+        "type":"radio"
     },
     "options": [
         {}
     ],
     "attributes": {
-         
+          "name":"gender",
           "value": "Female"
     },
     "validation": {
@@ -100,8 +95,7 @@
   {
     "fieldName" : "select",
     "fieldConfig": {
-        "type":"text",
-        "name": "mycountry"
+        "type":"text"
     },
     "options":[
         {"key":"India","value":"India","displayName":"India"},
@@ -110,17 +104,16 @@
         {"key":"Canada","value":"canada","displayName":"canada"}
     ],
     "attributes": {
-        
+          "name": "mycountry"
     }
   },
   {
     "fieldName" : "input",
     "fieldConfig": {
-      "name": "exp_level",
         "type":"range"
     },
     "attributes": {
-       
+          "name": "exp_level",
           "max":100,
           "min": 1,
           "size": "size",
@@ -134,11 +127,10 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-      "name": "Date",
         "type":"date"
     },
     "attributes": {
-        
+          "name": "Date"
     },
     "validation": {
         "required": true
@@ -146,27 +138,14 @@
   },{
     "fieldName" : "input",
     "fieldConfig": {
-      "name": "Time",
         "type":"time"
     },
     "attributes": {
-        
+          "name": "Time"
     },
     "validation": {
         "required": true
     } 
-  },
-  {
-    "fieldName":"textarea",
-    "fieldConfig": {
-
-    },
-    "attributes": {
-      "row": 20,
-      "cols": 40,
-      "name": "Suggtions",
-      "value":"Enter SomeThings Here"
-    }
   },
 
 
@@ -183,22 +162,20 @@
   {
     "fieldName" : "button",
     "fieldConfig": {
-        "name": "submit",
         "type":"submit"
     },
     "attributes": {
-        
+          "name": "email",
           "value": "Submit"
     }
   },
   {
     "fieldName" : "button",
     "fieldConfig": {
-        "name": "email",
         "type":"reset"
     },
     "attributes": {
-         
+          "name": "email",
           "value": "Reset"
     }
   }
