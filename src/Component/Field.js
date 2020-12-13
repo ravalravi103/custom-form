@@ -46,7 +46,7 @@ function Field({fieldData}) {
       console.log(e.target)
       //apply validation here 
         if(e.target.value==="") return
-        if(fieldValue.length===0) return setFieldValue([...fieldValue,{name:field.attributes.name,value:e.target.value}])
+        if(fieldValue.length===0) return setFieldValue([{name:field.attributes.name,value:e.target.value}])
         if(fieldValue.length>0){
             if(fieldValue.find(field => field.name===e.target.value)===undefined){
               setFieldValue([...fieldValue,{name:e.target.name,value:e.target.value}])
@@ -81,15 +81,6 @@ function Field({fieldData}) {
                            {field.attributes.value}
                          </button>)
        }
-     
-
-       function onChangeSelectHanlder(e){
-            console.log(e.target.value);
-       }
-
-       function onBlueSelectHandler(e){
-         console.log("On Blue",e.target.value)
-       }
 
        function createSelectField(field){
            return element = (
@@ -110,107 +101,69 @@ function Field({fieldData}) {
              
        }
 
+       function basicInputProps(field){
+        return (
+         (!field.attributes) ? {
+            type:field.fieldConfig.type,
+            name:field.attributes.name,
+            onChange:(e) => handleOnchange(e,field),
+            onBlur:(e) => handleBulr(e,field),
+          } : {
+           type:field.fieldConfig.type,
+           name:field.attributes.name,
+           onChange:(e) => handleOnchange(e,field),
+           onBlur:(e) => handleBulr(e,field),
+           required:field.validation.required,
+           placeholder:field.attributes.placeholder,  
+          }
+        )
+      
+      }  
+
     function checkInputTypeField(field){
         switch(field.fieldConfig.type){
           case 'text':
             element =  (<input
-                          type={field.fieldConfig.type}
-                          name={field.attributes.name}
-                          placeholder={field.attributes.placeholder}
+                          {...basicInputProps(field)}
                           maxLength={field.attributes.maxLength}
                           minLength={field.attributes.minLength}
                           size={field.attributes.size}
                           list={field.attributes.list}
-                          onChange={(e) => handleOnchange(e,field)}
-                        
-                          onBlur={(e) => handleBulr(e,field)}
-                          required={field.validation.required}
                       />)
               break;
               case 'email':
                 element =  (<input
-                              type={field.fieldConfig.type}
-                              name={field.attributes.name}
-                              placeholder={field.attributes.placeholder}
+                              {...basicInputProps(field)}
                               maxLength={field.attributes.maxLength}
                               minLength={field.attributes.minLength}
                               size={field.attributes.size}
                               list={field.attributes.list}
-                              onChange={(e) => handleOnchange(e,field)}
-                              onBlur={(e) => handleBulr(e,field)}
-                              required={field.validation.required}
                           />)
                   break;
             case 'password':
                   element = (<input
-                    type={field.fieldConfig.type}
-                    name={field.attributes.name}
-                    placeholder={field.attributes.placeholder}
+                    {...basicInputProps(field)}
                     maxLength={field.attributes.maxLength}
                     minLength={field.attributes.minLength}
-                    onChange={(e) => setText(e.target.value)}
-                    size={field.attributes.size}
-                    list={field.attributes.list}
-                    onChange={(e) => handleOnchange(e,field)}
-                    onBlur={(e) => handleBulr(e,field)}
-                    required={field.validation.required}
                 />)
               break;
               case 'range':
                 element = (<input
-                  type={field.fieldConfig.type}
-                  name={field.attributes.name}
-                  placeholder={field.attributes.placeholder}
-                  maxLength={field.attributes.maxLength}
-                  minLength={field.attributes.minLength}
-                  onChange={(e) => setText(e.target.value)}
-                  size={field.attributes.size}
-                  list={field.attributes.list}
-                  onChange={(e) => handleOnchange(e,field)}
-                  onBlur={(e) => handleBulr(e,field)}
-                  required={field.validation.required}
+                  {...basicInputProps(field)}
+                  max={field.attributes.max}
+                  min={field.attributes.min}
               />)
             break;
             case 'date':
-              element = (<input
-                type={field.fieldConfig.type}
-                name={field.attributes.name}
-                placeholder={field.attributes.placeholder}
-                maxLength={field.attributes.maxLength}
-                minLength={field.attributes.minLength}
-                onChange={(e) => setText(e.target.value)}
-                size={field.attributes.size}
-                list={field.attributes.list}
-                onChange={(e) => handleOnchange(e,field)}
-                onBlur={(e) => handleBulr(e,field)}
-                required={field.validation.required}
-            />)
+              element = (<input {...basicInputProps(field)}/>)
           break;
           case 'time':
-            element = (<input
-              type={field.fieldConfig.type}
-              name={field.attributes.name}
-              placeholder={field.attributes.placeholder}
-              maxLength={field.attributes.maxLength}
-              minLength={field.attributes.minLength}
-              onChange={(e) => setText(e.target.value)}
-              size={field.attributes.size}
-              list={field.attributes.list}
-              onChange={(e) => handleOnchange(e,field)}
-              onBlur={(e) => handleBulr(e,field)}
-              required={field.validation.required}
-          />)
+            element = (<input {...basicInputProps(field)}/>)
         break;
             case 'radio': 
                  element = (<><label>{field.attributes.value}</label><input
-                      type={field.fieldConfig.type}
-                      name={field.attributes.name}
-                      placeholder={field.attributes.placeholder} 
-                      onChange={(e) => setText(e.target.value)}
+                      {...basicInputProps(field)}
                       value={field.attributes.value}     
-                      onChange={(e) => handleOnchange(e,field)}
-                      onBlur={(e) => handleBulr(e,field)}
-                      required={field.validation.required}
                     /></>)
         }
         return element

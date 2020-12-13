@@ -8,7 +8,6 @@
     },
     "attributes": {
           "name": "name",
-          "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
           "placeholder":"Name*",
@@ -23,19 +22,12 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"email",
-        "value": ""
-        
+        "type":"email"        
     },
     "attributes": {
           "name": "email",
-          "value": "",
-          "minLength": "minLength",
-          "maxlength": "maxLength",
           "placeholder":"Email*",
-          "size": "size",
-          "randomly": "true",
-          "list": "list"
+          "size": "size"
     },
     "validation": {
         "required": true
@@ -44,13 +36,10 @@
   {
     "fieldName" : "input",
     "fieldConfig": {
-        "type":"password",
-        "value": ""
-        
+        "type":"password"   
     },
     "attributes": {
           "name": "password",
-          "value": "",
           "minLength": "minLength",
           "maxlength": "maxLength",
           "placeholder":"Password*",
