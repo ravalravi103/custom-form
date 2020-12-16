@@ -1,13 +1,18 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
 function Field({fieldData}) {
 
     const [text,setText] = useState('')
     const [fieldValue,setFieldValue] = useState([]);
-    const [finalFormData, setFinalFormData] = useState([])
-
+    const [finalFormData, setFinalFormData] = useState([]);
+    const [allJsxElement,setAllJsxElement] = useState([]);
+    
     let allFields = [];
-    let element = ''
+    let element = '';
+
+    useEffect(() => {
+      setAllJsxElement(createField());
+    },[fieldValue])
 
     function handlerButtonTypeButton(){
       console.log("Button Type Button Clicked !")
@@ -42,18 +47,17 @@ function Field({fieldData}) {
         setText(e.target.value)
     } 
 
-    function handleBulr(e,field){ 
-       console.log('Valiodation Passed !')
+    function handleBulr(e,field){      
         if(e.target.value==="") return
-        if(fieldValue.length===0) return setFieldValue([{name:e.target.name,value:e.target.value}])
-        if(fieldValue.length>0){
-            if(fieldValue.find(field => field.name===e.target.value)===undefined){
-              setFieldValue([...fieldValue,{name:e.target.name,value:e.target.value}])
-            }
-            const tempArr=fieldValue.filter(field => field.name!==e.target.name)
-            tempArr.push({name: e.target.name,value: e.target.value})
-            setFieldValue(tempArr)
-        }
+        const tempArr = [...fieldValue];
+        const currobj = tempArr.find(field => field.name===e.target.name);
+         if(!currobj){
+          setFieldValue([...fieldValue,{name:e.target.name,value:e.target.value}]);
+         }
+         else{
+           currobj.value = e.target.value;
+           setFieldValue(tempArr);
+         }
     }
 
     function createLabel(field) {
@@ -100,70 +104,55 @@ function Field({fieldData}) {
              
        }
 
+       function getAllProps(field) {
+          return (
+            { ...basicInputProps(field),
+              maxLength: field.attributes.maxLength,
+              minLength:field?.attributes.minLength,
+              size:field?.attributes.size,
+              list:field?.attributes.list,
+              max:field?.attributes.max,
+              min:field?.attributes.min,
+              value: field.attributes.value,  required:field?.validation.required,
+              placeholder:field?.attributes.placeholder
+            }
+          )
+       }
+
        function basicInputProps(field){
         return (
-         (!field.attributes) ? {
-            type:field.fieldConfig.type,
-            name:field.fieldConfig.name,
-            onChange:(e) => handleOnchange(e,field),
-            onBlur:(e) => handleBulr(e,field),
-          } : {
+         {
            type:field.fieldConfig.type,
            name:field.fieldConfig.name,
            onChange:(e) => handleOnchange(e,field),
            onBlur:(e) => handleBulr(e,field),
-           required:field.validation.required,
-           placeholder:field.attributes.placeholder,  
+          
           }
         )
-      
       }  
 
     function checkInputTypeField(field){
         switch(field.fieldConfig.type){
           case 'text':
-            element =  (<input
-                          {...basicInputProps(field)}
-                          maxLength={field.attributes.maxLength}
-                          minLength={field.attributes.minLength}
-                          size={field.attributes.size}
-                          list={field.attributes.list}
-                      />)
-              break;
-              case 'email':
-                element =  (<input
-                              {...basicInputProps(field)}
-                              maxLength={field.attributes.maxLength}
-                              minLength={field.attributes.minLength}
-                              size={field.attributes.size}
-                              list={field.attributes.list}
-                          />)
-                  break;
-            case 'password':
-                  element = (<input
-                    {...basicInputProps(field)}
-                    maxLength={field.attributes.maxLength}
-                    minLength={field.attributes.minLength}
-                />)
-              break;
-              case 'range':
-                element = (<input
-                  {...basicInputProps(field)}
-                  max={field.attributes.max}
-                  min={field.attributes.min}
-              />)
+            element =  (<input {...getAllProps(field)}/>)
             break;
-            case 'date':
-              element = (<input {...basicInputProps(field)}/>)
-          break;
+          case 'email':
+             element =  (<input {...getAllProps(field)}/>)
+             break;
+          case 'password':
+            element = (<input {...getAllProps(field)}/>)
+            break;
+          case 'range':
+             element = (<input {...getAllProps(field)}/>)
+             break;
+          case 'date':
+            element = (<input {...getAllProps(field)}/>)
+            break;
           case 'time':
-            element = (<input {...basicInputProps(field)}/>)
-        break;
-            case 'radio': 
-                 element = (<><label>{field.attributes.value}</label><input
-                      {...basicInputProps(field)}
-                      value={field.attributes.value}     
-                    /></>)
+            element = (<input {...getAllProps(field)}/>)
+            break;
+          case 'radio': 
+              element = (<><label>{field.attributes.value}</label><input {...getAllProps(field)}/></>)
         }
         return element
       }
@@ -202,7 +191,7 @@ function Field({fieldData}) {
         <div >
            <div className="container">
             <div className="form"> 
-              {createField().map((field,i) => {
+             {allJsxElement.map((field,i) => {
                 return (
                   <div className="form-group" key={i}>
                        <div className="form-control">{field}</div>
