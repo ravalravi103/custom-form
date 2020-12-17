@@ -1,0 +1,290 @@
+[
+    {
+        "UILabel":"Name",
+        "type": "text",
+        "required": "true",
+        "attributes" : {
+            "name": "name",
+            "value": "",
+            "placeholder": "Enter Name",
+            "maxLength": "length",
+            "minLength": "length",
+            "size": "size",
+            "randomly": "true",
+            "list":"list"
+        }
+      },
+      {
+        "UILabel":"Email",
+        "type": "email",
+        "required": "true",
+        "attributes" : {
+            "name": "name",
+            "value": "",
+            "placeholder": "Enter Email",
+            "maxLength": 10,
+            "minLength": 15,
+            "size": "size",
+            "randomly": "true",
+            "list":"list",
+            "pattern": ".+@globex.com"
+        }
+      },
+      {
+        "UILabel":"Number",
+         "type":"number",
+         "required": "false",
+         "attributes": {
+             "name":"name",
+             "value": "",
+             "palceholder":"Enter Number",
+             "min":"value",
+             "max": "max",
+             "equired" : "boolean",
+             "maxlength":"length",
+             "minLength":"length",
+             "multiple": "boolean"
+          }
+      },
+      {
+        "UILabel": "url",
+        "type": "url",
+        "required": "boolen value",
+        "attributes": {
+             "name": "name",
+             "value": "",
+             "placeholder": "Enter Url",
+             "maxLength": "length",
+             "minLength": "length",
+             "size": "size",
+             "randomly": "boolean",
+             "list":"list"
+        }
+    } ,
+  
+    {
+        "UILabel": "Time",
+        "type":"time",
+        "attributes": {
+            "name": "name",
+            "value": "13:30",
+            "max": "max",
+            "min": "min",
+            "randomly": "false",
+            "step": "steping Interval"
+        }
+      },
+  
+      {
+        "UILabel": "Week",
+        "type":"week",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "max": "max",
+            "min": "min",
+            "randomly": "boolen",
+            "step": "steping Interval"
+        }
+      },
+  
+      {
+        "UILabel": "Date",
+        "type":"date",
+        "attributes": {
+            "name": "name",
+            "value": "2018-07-22",
+            "max": "max",
+            "min": "min",
+            "step": "steping Interval"
+        }
+      },
+  
+  
+      {
+        "UILabel": "Tel",
+        "type": "tel",
+        "required": "boolen value",
+        "attributes": {
+             "name": "name",
+             "value": "value",
+             "placeholder": "Placeholder",
+             "maxLength": "length",
+             "minLength": "length",
+             "size": "size",
+             "randomly": "boolean",
+             "list":"list"
+        }
+    },
+  
+  
+    {
+        "UILabel": "File    ",
+        "type": "file",
+        "required": "boolean",
+        "attributes": {
+            "name":"name",
+            "value": ""
+        }
+    },
+  
+    {
+        "UILabel":"submti",
+        "type": "submit",
+        "attributes": {
+            "name": "name",
+            "value": "Submit",
+            "formaction": "url",
+            "formenctype": "enc type",
+            "formmethod": "method",
+            "fromonvalidate": "false",
+            "fromtarget": "_blank"
+        }
+    },
+  
+    {
+        "UILabel": "Range",
+        "type":"range",
+        "attributes": {
+            "name": "name",
+            "value": "value",
+            "max": 10,
+            "min": 1,
+            "step": 1
+        }
+      },
+      
+      {
+        "UILabel": "hidden",
+        "type":"hidden",
+        "attributes": {
+            "name": "name",
+            "value": "value"
+        }
+    },
+  
+    {
+        "UILabel":"Submit",
+        "type": "submit",
+        "attributes": {
+            "name": "name",
+            "value": "Submit",
+            "formaction": "url",
+            "formenctype": "enc type",
+            "formmethod": "method",
+            "fromonvalidate": "false",
+            "fromtarget": "target"
+        }
+    },
+  
+    {
+        "UILabel": "Button",
+        "type":"button",
+        "attributes": {
+            
+        }
+      },
+  
+      {
+        "UILabel": "Image",
+        "type":"image",
+        "attributes": {
+            "name": "name",
+            "alt": "altName",
+            "src":"",
+            "height": "height",
+            "width": "width",
+            "formaction": "url",
+            "formenctype": "enc type",
+            "formmethod": "method",
+            "fromtarget": "target"
+        }
+      },
+      {
+        "UILabel": "UIlabel",
+        "type":"radio",
+        "attributes": {
+            "name": "Gender",
+            "value": {
+               "value1": "Male",
+               "value2": "female"
+            }
+          
+        }
+      },
+
+      {
+          "fieldName" : "input",
+          "fieldConfig": {
+              "type":"text"
+              
+          },
+          "attributes": {
+                "name": "name",
+                "value": "",
+                "minLength": "minLength",
+                "maxlength": "maxLength",
+                "placeholder":"Enter name",
+                "size": "size",
+                "randomly": "true",
+                "list": "list"
+          },
+          "validation": {
+              "required": "true"
+          }
+          
+      },
+      {
+        "fieldName" : "select",
+        "attributes": {
+          "name": "Country",
+          "placeholder": "Country"
+        },
+        "options" : [
+           {"key": "India", "value": "India", "displayName" : "India"}
+        ] 
+      },
+
+      {
+        "fieldName" : "select",
+        "attributes": {
+          "name": "Country",
+          "placeholder": "Country"
+        },
+        "options" : [
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"},
+           {"key": "India", "value": "India", "displayName" : "India"}
+    
+        ] 
+      },
+
+
+      
+  {
+    "fieldName" : "input",
+    "fieldConfig": {
+        "type":"password",
+        "value": ""
+        
+    },
+    "attributes": {
+          "name": "password",
+          "value": "",
+          "minLength": "minLength",
+          "maxlength": "maxLength",
+          "placeholder":"Password*",
+          "size": "size",
+          "randomly": "true",
+          "list": "list"
+    },
+    "validation": {
+        "required": true
+    } 
+  }
+  
+
+  ]
