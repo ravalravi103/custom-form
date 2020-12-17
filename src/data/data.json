@@ -49,7 +49,8 @@
           "list": "list"
     },
     "validation": {
-        "required": true
+        "required": true,
+        "regEx": ""
     } 
   },
  

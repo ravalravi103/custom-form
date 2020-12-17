@@ -1,14 +1,20 @@
 import React,{useEffect, useState} from 'react'
 
 function Field({fieldData}) {
-
-    const [text,setText] = useState('')
+  
     const [fieldValue,setFieldValue] = useState([]);
     const [finalFormData, setFinalFormData] = useState([]);
     const [allJsxElement,setAllJsxElement] = useState([]);
-    
+
+    const [allError,setAllError] = useState([]);
+
+    // all Global Variable;
     let allFields = [];
     let element = '';
+
+    // all The Regex for Validation
+    const emailRegEx  =  /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+    const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
     useEffect(() => {
       setAllJsxElement(createField());
@@ -19,12 +25,11 @@ function Field({fieldData}) {
     }
 
     function handleButtonTypesubmit(){
-         console.log("Button Type Submit  clicked !")
+      if(allError.length>0) return
          setFinalFormData(fieldValue.map(field => field));
     } 
    
     function handleButtonTypeReset() {
-        setText('')
         setFinalFormData([]);
     }
 
@@ -43,11 +48,42 @@ function Field({fieldData}) {
         }
    }
 
-    function handleOnchange(e,field) {
-        setText(e.target.value)
-    } 
+  function validatePasswordFiled(e){
+    if(!passwordRegEx.test(e.target.value)){
+      if(allError.find(err => err.name==='password')) return
+      setAllError([...allError,{name: 'password',message: 'Invalid password(It has to be Combination of small-captial-number-and special symbol)'}])
+      return;
+ }
+ else{
+    setAllError(allError.filter(err => err.name!=='password'));
+ }
+  }
 
-    function handleBulr(e,field){      
+  function validateEmail(e){
+    if(!emailRegEx.test(e.target.value)){
+         if(allError.find(err => err.name==='email')) return
+         setAllError([...allError,{name: 'email',message: 'Invalid Email'}])
+         return;
+    }
+    else{
+       setAllError(allError.filter(err => err.name!=='email'));
+    }
+  }
+
+    function validateFiled(e,field){
+            switch(field.fieldConfig.type){
+                 case 'password': 
+                    validatePasswordFiled(e);
+                    break;
+                 case 'email':
+                    validateEmail(e)
+                    break
+            }
+    }
+
+    function handleBulr(e,field){  
+      validateFiled(e,field);
+      console.log(allError.length)
         if(e.target.value==="") return
         const tempArr = [...fieldValue];
         const currobj = tempArr.find(field => field.name===e.target.name);
@@ -89,7 +125,6 @@ function Field({fieldData}) {
            return element = (
                        <select 
                          name={field.fieldConfig.name} 
-                         onChange={(e) => handleOnchange(e)} 
                          onBlur={(e) => handleBulr(e)}>
                            {field.options.map(option => {
                                return(
@@ -124,7 +159,6 @@ function Field({fieldData}) {
          {
            type:field.fieldConfig.type,
            name:field.fieldConfig.name,
-           onChange:(e) => handleOnchange(e,field),
            onBlur:(e) => handleBulr(e,field),
           
           }
@@ -189,8 +223,10 @@ function Field({fieldData}) {
 
     return (
         <div >
+           {allError.map(eMassage => <p>{eMassage.message}</p>)}
            <div className="container">
             <div className="form"> 
+   
              {allJsxElement.map((field,i) => {
                 return (
                   <div className="form-group" key={i}>
